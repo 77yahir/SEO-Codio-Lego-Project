@@ -8,7 +8,7 @@ class RebrickableClient:
       "Authorization": f"key {api_key}"
     }
 
-  def get_colors(self, page: int=1, page_size: int=10, ordering: str | None = None):
+  def get_colors(self, page: int=1, page_size: int=100, ordering: str | None = None):
     url = f"{self.BASE_URL}/colors/"
 
     params = {
@@ -37,7 +37,7 @@ class RebrickableClient:
     max_parts: float | None = None, 
     ordering: str | None = None, 
     page: int=1, 
-    page_size: int=10, 
+    page_size: int=100, 
     ):
     
     url = f"{self.BASE_URL}/sets/"
