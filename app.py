@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from config import get_api_key
 from rebrickable_client import RebrickableClient
 import json
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-  return "Lego Flask app is running!"
+  return render_template("home.html")
 
 @app.route("/load-sets")
 def load_sets():
@@ -39,14 +39,7 @@ def sets_by_year():
   with engine.connect() as connection:
     query_result = connection.execute(db.text(sql_query)).fetchall()
 
-  results = []
-  for row in query_result:
-    results.append({
-      "Year": row[0],
-      "Amount": row[1]
-    })
-
-  return results
+  return render_template("sets_by_year.html", results=query_result)
 
 if __name__ == "__main__":
   app.run(debug=True)
