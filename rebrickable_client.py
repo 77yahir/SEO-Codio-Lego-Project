@@ -1,4 +1,6 @@
-import requests
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+import json
 
 class RebrickableClient:
   BASE_URL = "https://rebrickable.com/api/v3/lego"
@@ -19,13 +21,11 @@ class RebrickableClient:
 
     params = {key: value for key, value in params.items() if value is not None}
 
-    response = requests.get(
-      url,
-      headers=self.headers, 
-      params=params
-    )
-
-    return response.json()
+    query = urlencode(params)
+    request_url = f"{url}?{query}" if query else url
+    request = Request(request_url, headers=self.headers, method="GET")
+    with urlopen(request) as response:
+      return json.loads(response.read().decode("utf-8"))
 
   def search_sets(
     self,
@@ -56,12 +56,10 @@ class RebrickableClient:
 
     params = {key: value for key, value in params.items() if value is not None}
 
-    response = requests.get(
-      url,
-      headers=self.headers,
-      params=params
-    )
-
-    return response.json()
+    query = urlencode(params)
+    request_url = f"{url}?{query}" if query else url
+    request = Request(request_url, headers=self.headers, method="GET")
+    with urlopen(request) as response:
+      return json.loads(response.read().decode("utf-8"))
 
 
