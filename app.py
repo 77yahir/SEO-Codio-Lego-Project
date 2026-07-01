@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from config import get_api_key
 from rebrickable_client import RebrickableClient
+import git
 import json
 import pandas as pd
 import sqlalchemy as db
@@ -41,10 +42,17 @@ def sets_by_year():
 
   return render_template("sets_by_year.html", results=query_result)
 
+@app.route("/update_server", methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('/home/LegoSearch/SEO-Codio-Lego-Project')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
+
 if __name__ == "__main__":
   app.run(debug=True)
 
-  
-  # colors = client.get_colors(1, 10)
-  # print(json.dumps(colors, indent=4))
 
