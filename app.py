@@ -1,13 +1,13 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_sqlalchemy import SQLAlchemy
-from config import get_api_key
+from config import *
 from rebrickable_client import RebrickableClient
 from forms import RegistrationForm
 import git
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = get_api_key()
+app.config['SECRET_KEY'] = get_secret_key()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
