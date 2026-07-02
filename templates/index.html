@@ -1,23 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> LegoSearch Home </title>
-        <link rel="stylesheet" href="../style.css">
-    </head>
+<section class="base">
+    <div class="base-content">
+        <p class="base-eyebrow">Welcome to LegoSearch</p>
 
-    <body>
+        <h2>Find, track, and organize your favorite LEGO sets</h2>
 
-        <div class ="body_container">
-            <h2> Home Page </h2>
-            <p> Welcome to LegoSearch! </p>
-            <p>This is a website where you can search for your favorite lego sets and track which sets you want and currently may have. <br>
-                Check out each of the different pages! </p>
+        <p class="base-text">
+            Search for your favorite LEGO sets, save the ones you like or want,
+            and keep track of the sets you currently have.
+        </p>
+
+        <div class="base-actions">
+            <a href="{{ url_for('dashboard') }}" class="btn-primary-custom">View Dashboard</a>
+            <a href="{{ url_for('about') }}" class="btn-secondary-custom">Learn More</a>
         </div>
-
-    </body>
-</html>
+    </div>
+</section>
 
 {% endblock content %}

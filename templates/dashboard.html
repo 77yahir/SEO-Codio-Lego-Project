@@ -2,20 +2,45 @@
 
 {% block content %}
 
-<div class="body_container">
-    <h2>Dashboard</h2>
-    <p>You can find your saved sets and track your set inventory.</p>
-
-    <div>
-        <h4>Saved Sets</h4>
-
+<section class="dashboard-page">
+    <div class="dashboard-header">
+        <div>
+            <p class="base-eyebrow">Your collection</p>
+            <h2>Dashboard</h2>
+            <p>
+                Find your saved sets and track your LEGO inventory
+            </p>
+        </div>
     </div>
 
-    <div>
-        <h4>Your inventory</h4>
+    <div class="dashboard-grid">
+        <section class="dashboard-card">
+            <div class="card-header-row">
+                <h3>Saved Sets</h3>
+                <span class="card-count">0 sets</span>
+            </div>
+
+            <p class="card-text">
+                Sets you want to build, buy, or keep an eye on will appear here
+            </p>
+
+            <a href="#" class="btn-secondary-custom">Browse Sets</a>
+        </section>
+
+        <section class="dashboard-card">
+            <div class="card-header-row">
+                <h3>Your Inventory</h3>
+                <span class="card-count">0 sets</span>
+            </div>
+
+            <p class="card-text">
+                Track the LEGO sets you currently own and manage your collection
+            </p>
+
+            <a href="#" class="btn-secondary-custom">Add a Set</a>
+        </section>
     </div>
+</section>
 
-</div>
+{% endblock content %}
 
-
-{% endblock %}
